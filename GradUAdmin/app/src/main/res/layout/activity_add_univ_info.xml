@@ -1,0 +1,444 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_login"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:weightSum="1">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/bg_login">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/univName"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="@string/hint_univname"
+            android:inputType="text"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/univDesc"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="@string/hint_univdesc"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <TextView
+                android:layout_width="147dp"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textSize="17dp"
+                android:padding="7dp"/>
+            <Spinner
+                android:id="@+id/univLocn"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:entries="@array/states_list"
+                android:layout_weight="0.13" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/tuition_fees"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="@string/hint_tuition_fees"
+            android:inputType="numberDecimal"
+            android:padding="5dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:layout_weight="0.50" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <TextView
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:text="Research Opportunity"
+            android:textSize="17dp"
+            android:padding="7dp"
+            android:id="@+id/textView2"
+                android:layout_weight="0.73" />
+            <Spinner
+                android:id="@+id/resOpp"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:entries="@array/hint_res_opp_arrays"
+                android:prompt="@string/hint_res_opp_prompt" />
+            </LinearLayout>
+
+        <EditText
+            android:id="@+id/acceptanceRate"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="@string/hint_accepRate"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:inputType="numberDecimal" />
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rankings"
+        android:textSize="17dp"
+        android:padding="7dp"
+        android:textStyle="bold"
+        android:id="@+id/textView4" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+
+            <EditText
+                android:id="@+id/compsci"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:hint="@string/hint_comp"
+                android:padding="5dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint"
+                android:layout_weight="0.33"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  "
+                android:textSize="15dp"
+                android:padding="7dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
+
+            <EditText
+                android:id="@+id/elect"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:hint="@string/hint_elec"
+                android:padding="5dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint"
+                android:layout_weight="0.33"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  "
+                android:textSize="15dp"
+                android:padding="7dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
+
+            <EditText
+                android:id="@+id/civil"
+                android:layout_width="57dp"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:hint="@string/hint_civil"
+                android:inputType="number"
+                android:padding="5dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint"
+                android:layout_weight="0.33" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+
+            <EditText
+                android:id="@+id/mis"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:hint="@string/hint_mis"
+                android:padding="5dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint"
+                android:layout_weight="0.42"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  "
+                android:textSize="15dp"
+                android:padding="7dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
+
+            <EditText
+                android:id="@+id/mech"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:hint="@string/hint_mech"
+                android:inputType="number"
+                android:padding="5dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint"
+                android:layout_weight="0.26" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  "
+                android:textSize="15dp"
+                android:padding="7dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
+
+            <EditText
+                android:id="@+id/national"
+                android:layout_width="57dp"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:hint="@string/hint_national"
+                android:padding="5dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint"
+                android:layout_weight="0.33"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lower Bound of Accepted Profiles"
+            android:textSize="17dp"
+            android:padding="7dp"
+            android:textStyle="bold"
+            android:id="@+id/textView3" />
+
+        <EditText
+            android:id="@+id/gpa_actual"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="@string/hint_gpa_actual"
+            android:inputType="number"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/workEx"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="@string/hint_workExp"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/paperPublished"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="@string/hint_paperPublished"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:inputType="number" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="1">
+
+        <TextView
+            android:id="@+id/GRE_Q"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GRE:"
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/greQuant"
+            android:layout_width="57dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="@string/hint_quant"
+            android:padding="5dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:layout_weight="0.41"
+            android:inputType="number" />
+
+            <TextView
+                android:id="@+id/space1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="   "
+                android:textSize="15dp"
+                android:padding="7dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
+
+            <EditText
+                android:id="@+id/greVerbal"
+                android:layout_width="57dp"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:hint="@string/hint_verbal"
+                android:padding="5dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint"
+                android:layout_weight="0.47"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/space2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="   "
+                android:textSize="15dp"
+                android:padding="7dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
+
+            <EditText
+                android:id="@+id/greAwa"
+                android:layout_width="57dp"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:hint="@string/hint_awa"
+                android:padding="5dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint"
+                android:layout_weight="0.23"
+                android:inputType="number" />
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+
+            <EditText
+                android:id="@+id/toeflScore"
+                android:layout_width="57dp"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:hint="@string/hint_toefl"
+                android:inputType="number"
+                android:padding="5dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint"
+                android:layout_weight="0.50" />
+
+            <TextView
+                android:id="@+id/space3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="   "
+                android:textSize="15dp"
+                android:padding="7dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
+
+            <EditText
+                android:id="@+id/ieltsScore"
+                android:layout_width="57dp"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:hint="@string/hint_ielts"
+                android:inputType="number"
+                android:padding="5dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint"
+                android:layout_weight="0.47" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:background="@color/btn_signin_bg"
+                android:text="@string/btn_submit"
+                android:textColor="@color/btn_signin"
+                android:layout_weight="0.50"/>
+            <TextView
+                android:id="@+id/space4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="   "
+                android:textSize="15dp"
+                android:padding="7dp"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
+            <Button
+                android:id="@+id/btnHome"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:background="@color/btn_signin_bg"
+                android:text="@string/btn_home"
+                android:textColor="@color/btn_signin"
+                android:layout_weight="0.47"/>
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

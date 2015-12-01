@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">GradUAdmin</string>
+    <string name="hdng_admin_signin">GradU Admin Account</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="hdng_signin">GradU Account</string>
+    <string name="btn_link_to_signup">New User? SignUp..</string>
+    <string name="btn_signin">SIGN IN</string>
+    <string name="btn_logout">LOGOUT</string>
+    <string name="btn_submit">Submit</string>
+    <string name="btn_home">Back to Home</string>
+    <string name="btn_AddUnivInfo">Add University Info</string>
+    <string name="btn_EditUnivInfo">Edit University Info</string>
+    <string name="btn_NaviUserLogin">User Login</string>
+    <string name="btn_NaviAdminLogin">Admin Login</string>
+    <string name="welcome">Welcome</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_admin_login">GradU Admin Login</string>
+    <string name="title_activity_add_univ_info">Add University Info</string>
+    <string name="hint_univname">University Name</string>
+    <string name="hint_univdesc">Description</string>
+    <string name="hint_univlocn">Location</string>
+    <string name="hint_accepRate">Acceptance Rate (%)</string>
+    <string name="hint_tuition_fees">Tuition Fees ($)</string>
+    <string name="hint_gpa_actual">UG GPA out of 4</string>
+    <string name="hint_workExp">Work Experience in years</string>
+    <string name="hint_paperPublished">Paper(s) Published</string>
+    <string name="hint_res_opp_prompt">Select</string>
+    <string-array name="hint_res_opp_arrays">
+        <item>Select</item>
+        <item>Excellent</item>
+        <item>Good</item>
+        <item>Average</item>
+    </string-array>
+    <string-array name="states_list">
+        <item>Select</item>
+        <item>Arizona</item>
+        <item>Minnesota</item>
+        <item>NewYork</item>
+        <item>Illinois</item>
+        <item>Texas</item>
+        <item>California</item>
+        <item>Virginia</item>
+        <item>Florida</item>
+        <item>Alaska</item>
+        <item>Washington</item>
+    </string-array>
+    <string name="hint_quant">Quant</string>
+    <string name="hint_verbal">Verbal</string>
+    <string name="hint_awa">AWA</string>
+    <string name="hint_toefl">TOEFL</string>
+    <string name="hint_ielts">IELTS</string>
+    <string name="hint_comp">Comp</string>
+    <string name="hint_elec">Elec</string>
+    <string name="hint_civil">Civil</string>
+    <string name="hint_mis">MIS</string>
+    <string name="hint_mech">Mech</string>
+    <string name="hint_national">National</string>
+    <string name="btn_MyProfile">My Profile</string>
+    <string name="btn_GradSchoolRec">Grad School Recommender</string>
+    <string name="btn_UnivInfo">University Information</string>
+    <string name="title_activity_edit_univ_info">Edit University Info</string>
+    <string name="title_activity_user_main">UserMainActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_main_navigation">MainNavigationActivity</string>
+    <string name="title_admin_login">AdminLoginActivity</string>
+    <string name="title_login">LoginActivity</string>
+    <string name="title_univ_info">UniversityInfoActivity</string>
+    <string name="title_admin_main">AdminMainActivity</string>
+    <string name="title_univ_list">UniversityListActivity</string>
+</resources>

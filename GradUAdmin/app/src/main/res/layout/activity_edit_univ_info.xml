@@ -1,0 +1,500 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_login"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="1">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_login">
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_login"
+    android:padding="10dp">
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <TextView
+            android:text="Name"
+            android:id="@+id/univNameLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:padding="10dp" />
+        <EditText
+            android:id="@+id/univName"
+            android:layout_width="fill_parent"
+            android:background="@color/white"
+            android:hint="@string/hint_univname"
+            android:inputType="text"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <TextView
+            android:id="@+id/univDescLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="22dp"
+            android:padding="10dp" />
+        <EditText
+            android:id="@+id/univDesc"
+            android:layout_width="220dp"
+            android:background="@color/white"
+            android:hint="@string/hint_univdesc"
+            android:inputType="text"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <TextView
+            android:id="@+id/univLocnLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textSize="22dp"
+            android:padding="10dp" />
+        <EditText
+            android:id="@+id/univLocn"
+            android:layout_width="220dp"
+            android:background="@color/white"
+            android:hint="@string/hint_univlocn"
+            android:inputType="text"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <TextView
+            android:id="@+id/tiotionFeesLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tuition Fees"
+            android:textSize="22dp"
+            android:padding="10dp" />
+        <EditText
+            android:id="@+id/tuition_fees"
+            android:layout_width="220dp"
+            android:background="@color/white"
+            android:hint="@string/hint_tuition_fees"
+            android:inputType="text"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <TextView
+            android:id="@+id/resOppLbl"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Research Opportunity"
+            android:textSize="22dp"
+            android:padding="10dp" />
+        <EditText
+            android:id="@+id/resOpp"
+            android:layout_width="220dp"
+            android:background="@color/white"
+            android:hint="@string/hint_univdesc"
+            android:inputType="text"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+    </TableRow>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rankings"
+        android:textSize="17dp"
+        android:padding="7dp"
+        android:textStyle="bold"
+        android:id="@+id/textView4" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CS"
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/compsci"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="@string/hint_comp"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:layout_weight="0.13" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Elec"
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/elect"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="@string/hint_elec"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:layout_weight="0.42" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="civil"
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/civil"
+            android:layout_width="57dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="@string/hint_civil"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:layout_weight="0.33" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MIS"
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/mis"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="@string/hint_mis"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:layout_weight="0.42" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mech"
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/mech"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="@string/hint_mech"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:layout_weight="0.26" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="National"
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/national"
+            android:layout_width="57dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="@string/hint_national"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:layout_weight="0.08" />
+    </LinearLayout>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <TextView
+            android:text="Acceptance Rate"
+            android:id="@+id/accpLbl"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:padding="10dp" />
+        <EditText
+            android:id="@+id/acceptanceRate"
+            android:layout_width="fill_parent"
+            android:background="@color/white"
+            android:hint="@string/hint_accepRate"
+            android:inputType="text"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lower Bound of Accepted Profiles"
+        android:textSize="22dp"
+        android:layout_span="3"
+        android:padding="7dp"
+        android:textStyle="bold"
+        android:id="@+id/textView3" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <TextView
+            android:id="@+id/ugGpaLbl"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="UG GPA"
+            android:textSize="25dp"
+            android:padding="10dp" />
+        <EditText
+            android:id="@+id/gpa_actual"
+            android:layout_width="220dp"
+            android:background="@color/white"
+            android:hint="@string/hint_gpa_actual"
+            android:inputType="text"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+    </TableRow>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/GRE_Q"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GRE: Q "
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/greQuant"
+            android:layout_width="57dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="@string/hint_quant"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:layout_weight="0.41" />
+
+        <TextView
+            android:id="@+id/space1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" V "
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/greVerbal"
+            android:layout_width="57dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="@string/hint_verbal"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:layout_weight="0.47" />
+
+        <TextView
+            android:id="@+id/space2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AWA"
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/greAwa"
+            android:layout_width="57dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="@string/hint_awa"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:layout_weight="0.23" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+
+        <TextView
+            android:id="@+id/toelfLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TOEFL"
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/toeflScore"
+            android:layout_width="57dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="@string/hint_toefl"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:layout_weight="0.45" />
+
+        <TextView
+            android:id="@+id/IeltsLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IELTS"
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/ieltsScore"
+            android:layout_width="57dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="@string/hint_ielts"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"
+            android:layout_weight="0.46" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@color/btn_signin_bg"
+            android:text="@string/btn_submit"
+            android:textColor="@color/btn_signin"
+            android:layout_weight="0.50"/>
+        <TextView
+            android:id="@+id/space4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   "
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@color/btn_signin_bg"
+            android:text="@string/btn_home"
+            android:textColor="@color/btn_signin"
+            android:layout_weight="0.47"/>
+    </LinearLayout>
+
+</TableLayout>
+</ScrollView>
+   </LinearLayout>

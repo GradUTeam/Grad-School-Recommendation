@@ -1,0 +1,14 @@
+<resources>
+
+    <color name="bg_login">#26ae90</color>
+    <color name="white">#ffffff</color>
+    <color name="input_login">#222222</color>
+    <color name="input_login_hint">#999999</color>
+    <color name="btn_signin">#26ae90</color>
+    <color name="btn_signin_bg">#eceef1</color>
+    <color name="lbl_name">#333333</color>
+    <color name="btn_clr">#ff6861</color>
+    <color name="btn_login">#26ae90</color>
+    <color name="btn_login_bg">#eceef1</color>
+
+</resources>
