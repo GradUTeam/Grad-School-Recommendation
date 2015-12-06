@@ -21,7 +21,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import  com.gradu.admin.graduadmin.MainActivity;
+import com.gradu.admin.graduadmin.AdminMainActivity;
+import com.gradu.admin.graduadmin.MainActivity;
 import  com.gradu.admin.graduadmin.R;
 import  com.gradu.admin.graduadmin.app.AppConfig;
 import  com.gradu.admin.graduadmin.app.AppController;
@@ -33,6 +34,7 @@ public class AdminLoginActivity extends Activity {
     private Button btnLogin;
     private EditText inputAdminUsername;
     private EditText inputPassword;
+    private Button btnBack;
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
@@ -45,6 +47,7 @@ public class AdminLoginActivity extends Activity {
         inputAdminUsername = (EditText) findViewById(R.id.username);
         inputPassword = (EditText) findViewById(R.id.password);
         btnLogin = (Button) findViewById(R.id.btnSignin);
+        btnBack = (Button) findViewById(R.id.btnBack);
 
         // Progress dialog
         pDialog = new ProgressDialog(this);
@@ -59,7 +62,7 @@ public class AdminLoginActivity extends Activity {
         // Check if admin is already logged in or not
         if (session.isLoggedIn()) {
             // admin is already logged in. Take him to main activity
-            Intent intent = new Intent(AdminLoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(AdminLoginActivity.this, AdminMainActivity.class);
             startActivity(intent);
             finish();
         }
@@ -85,6 +88,15 @@ public class AdminLoginActivity extends Activity {
 
         });
 
+        btnBack.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminLoginActivity.this, MainNavigationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     /**
@@ -125,7 +137,7 @@ public class AdminLoginActivity extends Activity {
 
                         // Launch main activity
                         Intent intent = new Intent(AdminLoginActivity.this,
-                                MainActivity.class);
+                                AdminMainActivity.class);
                         startActivity(intent);
                         finish();
                     } else {

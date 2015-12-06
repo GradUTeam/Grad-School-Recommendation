@@ -20,7 +20,7 @@ public class AdminMainActivity extends Activity {
     private TextView txtAdminName;
     private TextView txtAdminUsername;
     private Button btnAddUnivInfo;
-    private Button btnEditUnivInfo;
+    //private Button btnEditUnivInfo;
     private Button btnLogout;
 
     private SQLiteHandler db;
@@ -43,7 +43,7 @@ public class AdminMainActivity extends Activity {
         txtAdminName = (TextView) findViewById(R.id.adminName);
         txtAdminUsername = (TextView) findViewById(R.id.adminUsername);
         btnAddUnivInfo = (Button) findViewById(R.id.btnAddUnivInfo);
-        btnEditUnivInfo = (Button) findViewById(R.id.btnEditUnivInfo);
+        //btnEditUnivInfo = (Button) findViewById(R.id.btnEditUnivInfo);
         btnLogout = (Button) findViewById(R.id.btnLogout);
 
         // Fetching user details from sqlite
@@ -75,13 +75,13 @@ public class AdminMainActivity extends Activity {
         });
 
         // Edit University Info button click event
-        btnEditUnivInfo.setOnClickListener(new View.OnClickListener() {
+        /*btnEditUnivInfo.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 editUnivInfo();
             }
-        });
+        });*/
     }
 
     /**

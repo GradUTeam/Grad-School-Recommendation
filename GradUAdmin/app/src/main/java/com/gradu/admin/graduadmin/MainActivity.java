@@ -1,20 +1,22 @@
 package com.gradu.admin.graduadmin;
 
+import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.gradu.admin.graduadmin.activity.ApplyFilterActivity;
 import com.gradu.admin.graduadmin.activity.LoginActivity;
+import com.gradu.admin.graduadmin.activity.ProfileActivity;
 import com.gradu.admin.graduadmin.activity.UniversityListActivity;
 import com.gradu.admin.graduadmin.helper.SQLiteHandler;
 import com.gradu.admin.graduadmin.helper.SessionManager;
 
 import java.util.HashMap;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
     private TextView txtName;
     private TextView txtUsername;
@@ -49,14 +51,14 @@ public class MainActivity extends Activity {
         }
 
         // Fetching user details from sqlite
-        //HashMap<String, String> user = db.getUserDetails();
+        HashMap<String, String> user = db.getUserDetails();
 
         //String name = user.get("name");
-        //String username = user.get("username");
+        String username = user.get("username");
 
         // Displaying the user details on the screen
         //txtName.setText(name);
-        //txtUsername.setText(username);
+        txtUsername.setText(username);
 
         // Logout button click event
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -67,11 +69,11 @@ public class MainActivity extends Activity {
             }
         });
 
-       /*btnMyProfile.setOnClickListener(new View.OnClickListener() {
+       btnMyProfile.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MyProfileActivity.class);
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -81,11 +83,11 @@ public class MainActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, GradSchoolRecActivity.class);
+                Intent intent = new Intent(MainActivity.this, ApplyFilterActivity.class);
                 startActivity(intent);
                 finish();
             }
-        });*/
+        });
 
         btnUnivInfo.setOnClickListener(new View.OnClickListener() {
 
@@ -105,11 +107,11 @@ public class MainActivity extends Activity {
     private void logoutUser() {
         session.setLogin(false);
 
-        //db.deleteUsers();
+        db.deleteUsers();
 
         // Launching the login activity
-        //Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        //startActivity(intent);
-        //finish();
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

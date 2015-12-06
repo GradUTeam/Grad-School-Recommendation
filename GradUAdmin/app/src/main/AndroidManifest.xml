@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".AdminMainActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
@@ -37,19 +37,35 @@
         </activity>
         <activity
             android:name=".activity.LoginActivity"
-            android:label="@string/title_login" >
+            android:label="@string/title_activity_login" >
         </activity>
         <activity
-            android:name=".activity.UniversityInfoActivity"
-            android:label="@string/title_univ_info" >
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name=".activity.ApplyFilterActivity"
+            android:label="@string/title_activity_apply_filter" >
+        </activity>
+        <activity
+            android:name=".activity.RecoResults"
+            android:label="@string/title_activity_reco_results" >
         </activity>
         <activity
             android:name=".activity.UniversityListActivity"
-            android:label="@string/title_univ_list" >
+            android:label="@string/title_activity_university_list" >
         </activity>
         <activity
-            android:name=".AdminMainActivity"
-            android:label="@string/title_admin_main" >
+            android:name=".activity.UniversityInfoActivity"
+            android:label="@string/title_activity_university_info" >
+        </activity>
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:label="@string/title_activity_profile" >
         </activity>
     </application>
 
