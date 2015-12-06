@@ -8,14 +8,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 
-import com.gradu.admin.graduadmin.AdminMainActivity;
+import com.gradu.admin.graduadmin.MainActivity;
 import com.gradu.admin.graduadmin.R;
 import com.gradu.admin.graduadmin.helper.SQLiteHandler;
 import com.gradu.admin.graduadmin.helper.SessionManager;
 
 public class EditUnivInfo extends ActionBarActivity {
-    private static final String TAG = AddUnivInfo.class.getSimpleName();
+    private static final String TAG = EditUnivInfo.class.getSimpleName();
     private SQLiteHandler db;
     private SessionManager session;
     private ProgressDialog pDialog;
@@ -87,7 +89,7 @@ public class EditUnivInfo extends ActionBarActivity {
 
     private void navigateToHome() {
         // Launching the EditUnivInfo activity
-        Intent intent = new Intent(EditUnivInfo.this, AdminMainActivity.class);
+        Intent intent = new Intent(EditUnivInfo.this, MainActivity.class);
         startActivity(intent);
         finish();
     }

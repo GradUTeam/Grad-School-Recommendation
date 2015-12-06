@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}"
-    android:background="#c6c0ff">
+    tools:context="${relativePackage}.${activityClass}" >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -45,7 +44,7 @@
             android:textColor="@color/white"
             android:textSize="20dp" />
 
-       <!-- <Button
+        <Button
             android:id="@+id/btnEditUnivInfo"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -54,7 +53,7 @@
             android:text="@string/btn_EditUnivInfo"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="20dp" />-->
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/btnLogout"

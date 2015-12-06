@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ffa9a4"
+    android:background="@color/bg_login"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp"
@@ -60,15 +60,6 @@
             android:layout_marginTop="20dip"
             android:background="@color/btn_signin_bg"
             android:text="@string/btn_signin"
-            android:textColor="@color/btn_signin" />
-
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@color/btn_signin_bg"
-            android:text="@string/btn_back"
             android:textColor="@color/btn_signin" />
 
     </LinearLayout>

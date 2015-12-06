@@ -3,26 +3,17 @@ package com.gradu.admin.graduadmin.activity;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.Request;
+import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.gradu.admin.graduadmin.MainActivity;
-import com.gradu.admin.graduadmin.R;
-import com.gradu.admin.graduadmin.app.AppConfig;
-import com.gradu.admin.graduadmin.app.AppController;
-import com.gradu.admin.graduadmin.helper.SQLiteHandler;
-import com.gradu.admin.graduadmin.helper.SessionManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,14 +21,23 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends Activity {
+import  com.gradu.admin.graduadmin.MainActivity;
+import  com.gradu.admin.graduadmin.R;
+import  com.gradu.admin.graduadmin.app.AppConfig;
+import  com.gradu.admin.graduadmin.app.AppController;
+import  com.gradu.admin.graduadmin.helper.SQLiteHandler;
+import  com.gradu.admin.graduadmin.helper.SessionManager;
 
+/**
+ * Created by Pranshu on 11/25/2015.
+ */
+public class LoginActivity extends Activity {
     private static final String TAG = LoginActivity.class.getSimpleName();
     private Button btnLogin;
     private Button btnLinkToSignUp;
+    private Button btnLinkToFrgtPwd;
     private EditText inputUsername;
     private EditText inputPassword;
-    private Button btnBack;
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
@@ -51,7 +51,6 @@ public class LoginActivity extends Activity {
         inputPassword = (EditText) findViewById(R.id.password);
         btnLogin = (Button) findViewById(R.id.btnSignin);
         btnLinkToSignUp = (Button) findViewById(R.id.btnLinkToSignUpScreen);
-        btnBack = (Button) findViewById(R.id.btnBack);
 
         // Progress dialog
         pDialog = new ProgressDialog(this);
@@ -96,19 +95,10 @@ public class LoginActivity extends Activity {
         btnLinkToSignUp.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
-
-        btnBack.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, MainNavigationActivity.class);
-                startActivity(intent);
-                finish();
+                //Intent i = new Intent(getApplicationContext(),
+                //        RegisterActivity.class);
+                //startActivity(i);
+                //finish();
             }
         });
 
@@ -124,7 +114,7 @@ public class LoginActivity extends Activity {
         pDialog.setMessage("Logging in ...");
         showDialog();
 
-        StringRequest strReq = new StringRequest(Request.Method.POST,
+        StringRequest strReq = new StringRequest(Method.POST,
                 AppConfig.URL_LOGIN, new Response.Listener<String>() {
 
             @Override
@@ -144,10 +134,11 @@ public class LoginActivity extends Activity {
 
                         // Now store the user in SQLite
                         JSONObject user = jObj.getJSONObject("user");
+                        String name = user.getString("fullname");
                         String username = user.getString("username");
 
                         // Inserting row in users table
-                        db.addUser(username);
+                        db.addUser(name, username);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,
