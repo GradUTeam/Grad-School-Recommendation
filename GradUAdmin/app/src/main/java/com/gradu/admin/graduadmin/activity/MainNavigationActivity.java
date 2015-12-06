@@ -12,7 +12,6 @@ import com.gradu.admin.graduadmin.R;
 
 public class MainNavigationActivity extends ActionBarActivity {
 
-
     private Button btnNaviUserLogin;
     private Button btnNaviAdminLogin;
     @Override

@@ -17,7 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.gradu.admin.graduadmin.MainActivity;
+import com.gradu.admin.graduadmin.AdminMainActivity;
 import com.gradu.admin.graduadmin.R;
 import com.gradu.admin.graduadmin.app.AppConfig;
 import com.gradu.admin.graduadmin.app.AppController;
@@ -29,7 +29,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class AddUnivInfo extends ActionBarActivity {
     private static final String TAG = AddUnivInfo.class.getSimpleName();
@@ -185,7 +184,7 @@ public class AddUnivInfo extends ActionBarActivity {
 
     private void navigateToHome() {
         // Launching the EditUnivInfo activity
-        Intent intent = new Intent(AddUnivInfo.this, MainActivity.class);
+        Intent intent = new Intent(AddUnivInfo.this, AdminMainActivity.class);
         startActivity(intent);
         finish();
     }
@@ -234,7 +233,7 @@ public class AddUnivInfo extends ActionBarActivity {
                         // Launch Main activity
                         Intent intent = new Intent(
                                 AddUnivInfo.this,
-                                MainActivity.class);
+                                AdminMainActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
