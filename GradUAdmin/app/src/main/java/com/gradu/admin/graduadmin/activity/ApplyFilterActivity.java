@@ -1,35 +1,35 @@
-package com.example.pranshu.gradureco.activity;
+package com.gradu.admin.graduadmin.activity;
 
-/**
- * Created by dell on 29-11-2015.
- */
-        import com.example.pranshu.gradureco.R;
-        import com.example.pranshu.gradureco.app.AppController;
-        import com.example.pranshu.gradureco.app.AppConfig;
-        import android.app.Activity;
-        import android.app.ProgressDialog;
-        import android.content.Intent;
-        import android.os.Bundle;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.Spinner;
-        import android.widget.Toast;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-        import com.android.volley.Request.Method;
-        import com.android.volley.Response;
-        import com.android.volley.VolleyError;
-        import com.android.volley.toolbox.StringRequest;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.gradu.admin.graduadmin.MainActivity;
+import com.gradu.admin.graduadmin.R;
+import com.gradu.admin.graduadmin.app.AppConfig;
+import com.gradu.admin.graduadmin.app.AppController;
+import com.gradu.admin.graduadmin.helper.SQLiteHandler;
 
-        import org.json.JSONArray;
-        import org.json.JSONException;
-        import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-        import java.util.HashMap;
-        import java.util.Map;
-
-
+import java.util.HashMap;
+import java.util.Map;
 
 public class ApplyFilterActivity extends Activity {
 
@@ -44,13 +44,19 @@ public class ApplyFilterActivity extends Activity {
     JSONArray amb;
     JSONArray mod;
     JSONArray safe;
-    String text="";
-//
+    String text = "";
+    //
     private static final String TAG = ApplyFilterActivity.class.getSimpleName();
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.applyfilter);
+        setContentView(R.layout.activity_apply_filter);
 
         Ranking_low = (EditText) findViewById(R.id.Ranking_text1);
         Ranking_high = (EditText) findViewById(R.id.Ranking_text2);
@@ -58,20 +64,20 @@ public class ApplyFilterActivity extends Activity {
         tuition_high = (EditText) findViewById(R.id.tuition2);
         search = (Button) findViewById(R.id.search);
         backTohome = (Button) findViewById(R.id.bktohome);
-        state_value=(Spinner)findViewById(R.id.state_spinner);
+        state_value = (Spinner) findViewById(R.id.state_spinner);
 
         // Progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
-//        backTohome.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View view) {
-//                Intent intent = new Intent(ApplyFilterActivity.this, MainActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+        backTohome.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                Intent intent = new Intent(ApplyFilterActivity.this, MainActivity.class);
+               startActivity(intent);
+                finish();
+           }
+      });
 
         search.setOnClickListener(new View.OnClickListener() {
 
@@ -83,9 +89,9 @@ public class ApplyFilterActivity extends Activity {
                 String state = state_value.getSelectedItem().toString();
 
                 // Check for empty data in the form
-                if (!Ranking_text1.isEmpty() && !Ranking_text2.isEmpty()&& !tuition1.isEmpty()&& !tuition2.isEmpty()) {
+                if (!Ranking_text1.isEmpty() && !Ranking_text2.isEmpty() && !tuition1.isEmpty() && !tuition2.isEmpty() && !state.equals("Select")) {
                     // login user
-                    Apply_filter(Ranking_text1, Ranking_text2,tuition1,tuition2,state);
+                    Apply_filter(Ranking_text1, Ranking_text2, tuition1, tuition2, state);
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext(),
@@ -102,45 +108,53 @@ public class ApplyFilterActivity extends Activity {
 
     /**
      * function to verify login details in mysql db
-     * */
-    private void Apply_filter(final String Ranking_text1, final String Ranking_text2, final String tuition1, final String tuition2, final String state) {
+     */
+    public void Apply_filter(final String Ranking_text1, final String Ranking_text2, final String tuition1, final String tuition2, final String state) {
         // Tag used to cancel the request
         String tag_string_req = "req_recommend";
-
+        Log.d(TAG, "Response: ");
         pDialog.setMessage("Loading ...");
         showDialog();
 
-        StringRequest strReq = new StringRequest(Method.POST,
+        StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.URL_Recommend, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
+
                 Log.d(TAG, "Response: " + response.toString());
                 hideDialog();
 
                 try {
+                    // response = response.replaceAll("\\\\","");
+                    //JSONParser parser_obj = new JSONParser();
+
+                    //JSONObject jObj = (JSONObject) parser_obj.parse(response);
+
+
                     JSONObject jObj = new JSONObject(response);
+
                     boolean error = jObj.getBoolean("error");
 
                     // Check for error node in json
                     if (!error) {
-                          amb = jObj.getJSONArray("Amb");
-                          mod = new JSONArray(jObj.get("Mod").toString());
-                          safe = new JSONArray(jObj.get("Safe").toString());
+                        amb = jObj.getJSONArray("Amb");
+                        mod = jObj.getJSONArray("Mod");;
+                        safe = jObj.getJSONArray("Safe");;
 //
-                        text=text.concat("Ambitious:"+"\n\n");
-                        for(int i =0;i<amb.length();i++){
-                            text=text.concat(amb.get(i).toString()+"\n");
+                        text = text.concat("Ambitious:" + "\n\n");
+                        for (int i = 0; i < amb.length(); i++) {
+                            text = text.concat(amb.get(i).toString() + "\n");
                         }
-                        text=text.concat("\n");
-                        text=text.concat("Moderate:"+"\n\n");
-                        for(int i =0;i<mod.length();i++){
-                            text=text.concat(mod.get(i).toString()+"\n");
+                        text = text.concat("\n");
+                        text = text.concat("Moderate:" + "\n\n");
+                        for (int i = 0; i < mod.length(); i++) {
+                            text = text.concat(mod.get(i).toString() + "\n");
                         }
-                        text=text.concat("\n");
-                        text=text.concat("Safe:"+"\n\n");
-                        for(int i =0;i<safe.length();i++){
-                            text=text.concat(safe.get(i).toString()+"\n");
+                        text = text.concat("\n");
+                        text = text.concat("Safe:" + "\n\n");
+                        for (int i = 0; i < safe.length(); i++) {
+                            text = text.concat(safe.get(i).toString() + "\n");
                         }
 
                         Intent intent = new Intent(ApplyFilterActivity.this,
@@ -175,10 +189,10 @@ public class ApplyFilterActivity extends Activity {
             @Override
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
-                //SQLiteHandler logedIn_user = new SQLiteHandler();
+                SQLiteHandler logedIn_user = new SQLiteHandler(getApplicationContext());
                 Map<String, String> params = new HashMap<String, String>();
-                //params.put("uid", logedIn_user.getUserDetails().get("username"));
-                params.put("uid", "1");
+                params.put("uid", logedIn_user.getUserDetails().get("username"));
+                //params.put("uid", "aksh");
                 params.put("rank_low", Ranking_text1);
                 params.put("rank_high", Ranking_text2);
                 params.put("tuition_low", tuition1);
@@ -191,7 +205,10 @@ public class ApplyFilterActivity extends Activity {
         };
 
         // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+        AppController.getInstance().
+
+                addToRequestQueue(strReq, tag_string_req);
+
     }
 
     private void showDialog() {
