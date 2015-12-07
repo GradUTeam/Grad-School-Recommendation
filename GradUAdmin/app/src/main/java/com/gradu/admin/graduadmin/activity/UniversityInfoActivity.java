@@ -1,25 +1,28 @@
-package com.example.akash.graduapplication.activity;
+package com.gradu.admin.graduadmin.activity;
 
-/**
- * Created by akash mandole
- */
-
-import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.Request.Method;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.akash.graduapplication.R;
-import com.example.akash.graduapplication.app.AppConfig;
-import com.example.akash.graduapplication.app.AppController;
-import com.example.akash.graduapplication.helper.SQLiteHandler;
-import com.example.akash.graduapplication.helper.SessionManager;
+import com.gradu.admin.graduadmin.AdminMainActivity;
+import com.gradu.admin.graduadmin.MainActivity;
+import com.gradu.admin.graduadmin.R;
+import com.gradu.admin.graduadmin.app.AppConfig;
+import com.gradu.admin.graduadmin.app.AppController;
+import com.gradu.admin.graduadmin.helper.SQLiteHandler;
+import com.gradu.admin.graduadmin.helper.SessionManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,8 +30,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UniversityInfoActivity extends Activity {
-    private static final String TAG = RegisterActivity.class.getSimpleName();
+public class UniversityInfoActivity extends ActionBarActivity {
+
+    private static final String TAG = UniversityInfoActivity.class.getSimpleName();
     private int uniid;
     private EditText nametext;
     private EditText descriptiontext;
@@ -41,6 +45,7 @@ public class UniversityInfoActivity extends Activity {
     private EditText mistext;
     private EditText tuitionfeetext;
     private EditText researchopportunitiestext;
+    private Button btnHome;
 
     private ProgressDialog pDialog;
     private SessionManager session;
@@ -67,6 +72,7 @@ public class UniversityInfoActivity extends Activity {
 
         tuitionfeetext = (EditText) findViewById(R.id.tuitionfeetext);
         researchopportunitiestext = (EditText) findViewById(R.id.researchopportunitiestext);
+        btnHome = (Button) findViewById(R.id.btnHome);
 
         // Progress dialog
         pDialog = new ProgressDialog(this);
@@ -81,6 +87,15 @@ public class UniversityInfoActivity extends Activity {
         // fetch data
 
         fetchData(uniid);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UniversityInfoActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void fetchData(final int uniid) {
@@ -91,7 +106,7 @@ public class UniversityInfoActivity extends Activity {
             pDialog.setMessage("Fetching university data...");
             showDialog();
 
-            StringRequest strReq = new StringRequest(Method.POST,
+            StringRequest strReq = new StringRequest(Request.Method.POST,
                     AppConfig.URL_FETCH_UNIVERSITY_INFO, new Response.Listener<String>() {
 
                 @Override
@@ -110,7 +125,7 @@ public class UniversityInfoActivity extends Activity {
                             session.setLogin(true);
 
                             // Now store the user in SQLite
-                           // String uid = jObj.getString("uid");
+                            // String uid = jObj.getString("uid");
                             JSONObject university = jObj.getJSONObject("university");
 
                             System.out.println(university);

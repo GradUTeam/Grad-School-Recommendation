@@ -1,27 +1,27 @@
-package com.example.akash.graduapplication.activity;
-
-/**
- * Created by akash mandole
- */
+package com.gradu.admin.graduadmin.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.android.volley.Request.Method;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.akash.graduapplication.R;
-import com.example.akash.graduapplication.app.AppConfig;
-import com.example.akash.graduapplication.app.AppController;
-import com.example.akash.graduapplication.helper.SQLiteHandler;
-import com.example.akash.graduapplication.helper.SessionManager;
+import com.gradu.admin.graduadmin.MainActivity;
+import com.gradu.admin.graduadmin.R;
+import com.gradu.admin.graduadmin.app.AppConfig;
+import com.gradu.admin.graduadmin.app.AppController;
+import com.gradu.admin.graduadmin.helper.SQLiteHandler;
+import com.gradu.admin.graduadmin.helper.SessionManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UniversityListActivity extends Activity {
+
     private static final String TAG = UniversityListActivity.class.getSimpleName();
 
     private ProgressDialog pDialog;
@@ -40,6 +41,7 @@ public class UniversityListActivity extends Activity {
     private Button btnasu;
     private Button btnstanford;
     private Button btnrit;
+    private Button btnHome;
 
 
     @Override
@@ -62,6 +64,7 @@ public class UniversityListActivity extends Activity {
         btnrit = (Button) findViewById(R.id.btnrit);
         btnstanford = (Button) findViewById(R.id.btnstanford);
         btncsula = (Button) findViewById(R.id.btncsula);
+        btnHome = (Button) findViewById(R.id.btnHome);
 
         btnSunyBuffalo.setOnClickListener(new View.OnClickListener() {
 
@@ -97,6 +100,16 @@ public class UniversityListActivity extends Activity {
                 fetchUniversityId(((Button) view).getText().toString());
             }
         });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UniversityListActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void fetchUniversityId(final String name) {
@@ -108,7 +121,7 @@ public class UniversityListActivity extends Activity {
                 pDialog.setMessage("Fetching university data...");
                 showDialog();
 
-                StringRequest strReq = new StringRequest(Method.POST,
+                StringRequest strReq = new StringRequest(Request.Method.POST,
                         AppConfig.URL_FETCH_UNIVERSITY_ID, new Response.Listener<String>() {
 
                     @Override

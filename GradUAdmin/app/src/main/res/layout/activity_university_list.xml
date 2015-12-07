@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/bg_login"
+    android:background="#c6c0ff"
     android:orientation="vertical"
     android:padding="10dp" >
 
@@ -61,7 +61,15 @@
             android:text="California State University-Los Angeles"
             android:textColor="@color/btn_login" />
 
-
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@color/btn_signin_bg"
+            android:text="@string/btn_home"
+            android:textColor="@color/btn_signin"
+            android:layout_weight="0.47"/>
 
 
     </LinearLayout>
