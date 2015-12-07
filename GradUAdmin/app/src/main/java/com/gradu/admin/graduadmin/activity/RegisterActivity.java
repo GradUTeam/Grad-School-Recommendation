@@ -1,25 +1,29 @@
-package com.example.kishore.grad.activity;
+package com.gradu.admin.graduadmin.activity;
 
-/**
- * Created by Kishore on 11/29/2015.
- */import android.app.Activity;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.text.TextWatcher;
-import android.text.Editable;
-import android.text.*;
 
-import com.android.volley.Request.Method;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.gradu.admin.graduadmin.MainActivity;
+import com.gradu.admin.graduadmin.R;
+import com.gradu.admin.graduadmin.app.AppConfig;
+import com.gradu.admin.graduadmin.app.AppController;
+import com.gradu.admin.graduadmin.helper.SQLiteHandler;
+import com.gradu.admin.graduadmin.helper.SessionManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,13 +31,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.kishore.grad.R;
-import com.example.kishore.grad.app.AppConfig;
-import com.example.kishore.grad.app.AppController;
-import com.example.kishore.grad.helper.SQLiteHandler;
-import com.example.kishore.grad.helper.SessionManager;
-
 public class RegisterActivity extends Activity {
+
     private static final String TAG = RegisterActivity.class.getSimpleName();
     private Button btnRegister;
     private Button btnLinkToLogin;
@@ -106,7 +105,9 @@ public class RegisterActivity extends Activity {
                 String undergradGpa =  inputUndergradGpa.getText().toString().trim();
                 String workExp = String.valueOf(inputWorkExp.getSelectedItem());
 
-                if (!fullname.isEmpty() && !username.isEmpty() && !emailId.isEmpty() && !password.isEmpty()) {
+                if (!fullname.isEmpty() && !username.isEmpty() && !emailId.isEmpty() && !password.isEmpty() &&
+                !courseInterest.isEmpty() && !undergradGpa.isEmpty() && !greQuant.isEmpty() && !greVerbal.isEmpty() &&
+                        !greAWA.isEmpty() && !engScore.isEmpty() && !workExp.isEmpty()) {
                     registerUser(fullname, emailId, username, password, courseInterest, undergradGpa, greQuant, greVerbal, greAWA, engScore,workExp );
                 } else {
                     Toast.makeText(getApplicationContext(),
@@ -135,35 +136,35 @@ public class RegisterActivity extends Activity {
      * email, password) to register url
      * */
     private void registerUser(final String fullname, final String emailId,
-                                       final String username, final String password, final String courseInterest, final String undergradGpa,
-                                       final String greQuant, final String greVerbal, final String greAWA, final String engScore, final String workExp)
-            {
-                // Tag used to cancel the request
-                String tag_string_req = "req_register";
+                              final String username, final String password, final String courseInterest, final String undergradGpa,
+                              final String greQuant, final String greVerbal, final String greAWA, final String engScore, final String workExp)
+    {
+        // Tag used to cancel the request
+        String tag_string_req = "req_register";
 
-                pDialog.setMessage("Registering ...");
-                showDialog();
+        pDialog.setMessage("Registering ...");
+        showDialog();
 
-                StringRequest strReq = new StringRequest(Method.POST,
-                        AppConfig.URL_REGISTER, new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                AppConfig.URL_REGISTER, new Response.Listener<String>() {
 
-                    @Override
-                    public void onResponse(String response) {
-                        Log.d(TAG, "Register Response: " + response);
-                        hideDialog();
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Register Response: " + response);
+                hideDialog();
 
-                        try {
-                            JSONObject jObj = new JSONObject(response);
-                            boolean error = jObj.getBoolean("error");
-                            if (!error) {
-                                // User successfully stored in MySQL
-                                // Now store the user in sqlite
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+                    if (!error) {
+                        // User successfully stored in MySQL
+                        // Now store the user in sqlite
 
-                                JSONObject user = jObj.getJSONObject("user");
-                                String fullname = user.getString("fullname");
-                                String emailId = user.getString("emailId");
-                                String username = user.getString("username");
-                                String courseInterest = user.getString("courseInterest");
+                        JSONObject user = jObj.getJSONObject("user");
+                        //String fullname = user.getString("fullname");
+                        //String emailId = user.getString("emailId");
+                        String username = user.getString("username");
+                        //String courseInterest = user.getString("courseInterest");
                      /*   String undergradGpa = user.getString("undergradGpa");
                         String greQuant = user.getString("greQuant");
                         String greVerbal = user.getString("greVerbal");
@@ -171,30 +172,28 @@ public class RegisterActivity extends Activity {
                         String engScore = user.getString("engScore");
                         String workExp = user.getString("workExp");*/
 
-                                // Inserting row in users table
-                                db.addUser(fullname, emailId,username, courseInterest);
+                        // Inserting row in users table
+                        db.addUser(username);
 
-                                Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
 
-                                // Launch login activity
-                                Intent intent = new Intent(
-                                        RegisterActivity.this,
-                                        LoginActivity.class);
-                                startActivity(intent);
-                                finish();
-                            } else {
+                        // Launch login activity
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
 
-                                // Error occurred in registration. Get the error
-                                // message
-                                String errorMsg = jObj.getString("error_msg");
-                                Toast.makeText(getApplicationContext(),
-                                        errorMsg, Toast.LENGTH_LONG).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
+                        // Error occurred in registration. Get the error
+                        // message
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(getApplicationContext(),
+                                errorMsg, Toast.LENGTH_LONG).show();
                     }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
         }, new Response.ErrorListener() {
 
             @Override
@@ -241,30 +240,3 @@ public class RegisterActivity extends Activity {
             pDialog.dismiss();
     }
 }
-/*
-
-p    ublic abstract class TextValidator implements TextWatcher {
-        private final TextView textView;
-
-        public TextValidator(TextView textView) {
-            this.textView = textView;
-        }
-
-        public abstract void validate(TextView textView, String text);
-
-    @Override
-    final public void afterTextChanged(Editable s) {
-        String text = textView.getText().toString();
-        validate(textView, text);
-    }
-
-    @Override
-    final public void beforeTextChanged(CharSequence s, int start, int count, int after) { */
-/* Don't care *//*
- }
-
-    @Override
-    final public void onTextChanged(CharSequence s, int start, int before, int count) { */
-/* Don't care *//*
- }
-}*/

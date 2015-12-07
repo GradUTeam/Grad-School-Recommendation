@@ -1,29 +1,29 @@
-package com.example.kishore.grad.activity;
-
-/**
- * Created by Kishore on 11/30/2015.
- */
+package com.gradu.admin.graduadmin.activity;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.text.TextWatcher;
-import android.text.Editable;
-import android.text.*;
 
 import com.android.volley.Request;
-import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.gradu.admin.graduadmin.AdminMainActivity;
+import com.gradu.admin.graduadmin.MainActivity;
+import com.gradu.admin.graduadmin.R;
+import com.gradu.admin.graduadmin.app.AppConfig;
+import com.gradu.admin.graduadmin.app.AppController;
+import com.gradu.admin.graduadmin.helper.SQLiteHandler;
+import com.gradu.admin.graduadmin.helper.SessionManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,13 +31,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.kishore.grad.R;
-import com.example.kishore.grad.app.AppConfig;
-import com.example.kishore.grad.app.AppController;
-import com.example.kishore.grad.helper.SQLiteHandler;
-import com.example.kishore.grad.helper.SessionManager;
-
 public class ProfileActivity extends Activity {
+
     private static final String TAG = ProfileActivity.class.getSimpleName();
     private Button btnUpdate;
     private EditText FullName;
@@ -49,6 +44,7 @@ public class ProfileActivity extends Activity {
     private Spinner GreAWA;
     private EditText UndergradGpa;
     private Spinner WorkExp;
+    private Button btnHome;
     private Button btnEditProfile;
     //private ProgressDialog pDialog;
     private SessionManager session;
@@ -69,7 +65,10 @@ public class ProfileActivity extends Activity {
         UndergradGpa = (EditText) findViewById(R.id.undergradGpa);
         WorkExp = (Spinner) findViewById(R.id.workExp);
         btnUpdate = (Button) findViewById(R.id.btnUpdate);
-        String usrname = "joerodgers";
+        btnHome = (Button) findViewById(R.id.btnHome);
+        //String usrname = "joerodgers";
+        SQLiteHandler myHandler = new SQLiteHandler(getApplicationContext());
+        String usrname = myHandler.getUserDetails().get("username");
         fetchUser(usrname);
         // Progress dialog
         //pDialog = new ProgressDialog(this);
@@ -82,12 +81,12 @@ public class ProfileActivity extends Activity {
         db = new SQLiteHandler(getApplicationContext());
 
         // Check if user is already logged in or not
-        if (session.isLoggedIn()) {
-            SQLiteHandler myHandler = new SQLiteHandler(ProfileActivity.this);
-            //String usrname = myHandler.getUsername().toString();
-
+        /*if (session.isLoggedIn()) {
             // User is already logged in. Take him to main activity
-        }
+            Intent intent = new Intent(AdminLoginActivity.this, AdminMainActivity.class);
+            startActivity(intent);
+            finish();
+        }*/
 
 
         // Register Button Click event
@@ -115,12 +114,22 @@ public class ProfileActivity extends Activity {
                 }
             }
         });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
     /**
      * Function to store user in MySQL database will post params(tag, name,
      * email, password) to register url
      * */
-    private void fetchUser(final String usrname )
+    private void fetchUser(final String usrname)
     {
         SQLiteHandler myHandler = new SQLiteHandler(ProfileActivity.this);
 
@@ -135,7 +144,7 @@ public class ProfileActivity extends Activity {
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, "Fetch Response: " + response);
-               // hideDialog();
+                // hideDialog();
 
                 try {
                     JSONObject jObj = new JSONObject(response);
@@ -169,7 +178,7 @@ public class ProfileActivity extends Activity {
 
 
                         // Inserting row in users table
-                       // db.addUser(fullname, emailId,username, courseInterest);
+                        // db.addUser(fullname, emailId,username, courseInterest);
 
                        /* Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
 
@@ -222,7 +231,7 @@ public class ProfileActivity extends Activity {
 
 
     private void updateUser(final String fullname, final String username, final String courseInterest, final String undergradGpa,
-                              final String greQuant, final String greVerbal, final String greAWA, final String engScore, final String workExp)
+                            final String greQuant, final String greVerbal, final String greAWA, final String engScore, final String workExp)
     {
         // Tag used to cancel the request
         String tag_string_req = "req_update";
@@ -230,13 +239,13 @@ public class ProfileActivity extends Activity {
         //pDialog.setMessage("Registering ...");
         //showDialog();
 
-        StringRequest strReq = new StringRequest(Method.POST,
+        StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.URL_UPDATE, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, "Update Response: " + response);
-              //  hideDialog();
+                //  hideDialog();
 
                 try {
                     JSONObject jObj = new JSONObject(response);
