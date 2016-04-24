@@ -122,14 +122,11 @@ public class ApplyFilterActivity extends Activity {
             @Override
             public void onResponse(String response) {
 
-                Log.d(TAG, "Response: " + response.toString());
+                Log.d(TAG, "Response: " + response);
                 hideDialog();
 
                 try {
-                    // response = response.replaceAll("\\\\","");
-                    //JSONParser parser_obj = new JSONParser();
-
-                    //JSONObject jObj = (JSONObject) parser_obj.parse(response);
+                  
 
 
                     JSONObject jObj = new JSONObject(response);
